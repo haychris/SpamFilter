@@ -1,3 +1,11 @@
+# save to server
+git add .
+git commit -m "insert message here"
+git push origin master
+
+# pull changes from server
+git pull origin master
+
 ###################
 ## For project 1
 ###################
