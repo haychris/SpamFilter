@@ -43,14 +43,14 @@ print('something')
 pathTrain = "./trec07p_data/Train/"
 dataTrain = read_bagofwords_dat(pathTrain+"train_emails_bag_of_words_200.dat", numofemails=45000)
 print('something')
-target = []
+trainTarget = []
 for i in range(22500):
-    target.append(0)
+    trainTarget.append(0)
 for i in range(22500):
-    target.append(1)
+    trainTarget.append(1)
 #target[0:22499] = 0
 #target[25000:44999] = 1
-print(target[0], target[22499], target[22500], target[44999])
+print(trainTarget[0], trainTarget[22499], trainTarget[22500], trainTarget[44999])
 pathTest = "./trec07p_data/Test/"
 dataTest = read_bagofwords_dat(pathTest+"test_emails_bag_of_words_0.dat", numofemails=5000)
 testTarget = []
@@ -58,7 +58,10 @@ for i in range(2500):
     testTarget.append(0)
 for i in range(2500):
     testTarget.append(1)
-clf = MultinomialNB(alpha = 1.0)
+
+
+
+clf = BernoulliNB(alpha = 1.0)
 clf.fit(dataTrain, target)
 print(clf.score(dataTest, testTarget))
 clf2 = MultinomialNB(alpha = 1.0)
